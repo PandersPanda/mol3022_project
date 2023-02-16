@@ -13,11 +13,11 @@ structures = data.iloc[:, 4].values
 
 
 # Convert the structures to classes
+structure_classes = {"H": 0, "E": 1, "C": 2}
 
-
-print(structures)
+##print(structures)
 # Encode the sequences and structures
-encoder = LabelEncoder()
+"""encoder = LabelEncoder()
 sequences = encoder.fit_transform(sequences)
 print("seq",sequences.dtype)
 structures = encoder.fit_transform(structures)
@@ -77,4 +77,4 @@ for epoch in range(epochs):
             correct += (predicted == y).sum().item()
 
         accuracy = correct / total
-        print(f"Test Accuracy: {accuracy:.4f}")
+        print(f"Test Accuracy: {accuracy:.4f}")"""
