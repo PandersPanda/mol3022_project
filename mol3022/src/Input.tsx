@@ -1,28 +1,36 @@
 import React, { useEffect, useState } from 'react'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 import axios from 'axios';
 
 function Input() {
 
-  const [getMessage, setGetMessage] = useState('')
+  const [input, setInput] = useState('');
+  const [output, setOutput] = useState('');
 
-  useEffect(()=>{
-    axios.get('http://localhost:5000/flask/hello').then(response => {
-      console.log("SUCCESS", response)
-      setGetMessage(response.data.message)
-    }).catch(error => {
-      console.log(error)
-    })
+  const handleInputChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
+    setInput(event.target.value);
+  };
 
-  }, [])
+  const handleSubmit = async () => {
+    try {
+        /* http://localhost:5000/input
+            Will return a reversed string */
+      const response = await axios.post('http://localhost:5000/predict', { input });
+      setOutput(response.data.output);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div>
     <Box
     component="form"
     sx={{
-      '& > :not(style)': { m: 1, width: '25ch' },
+      /* input text color */
+      '& .MuiInputBase-input': { color: 'white' },
     }}
     noValidate
     autoComplete="off"
@@ -30,15 +38,16 @@ function Input() {
     <TextField 
       label="Input for AI model" 
       color="secondary" 
+      value={input}
+      onChange={handleInputChange}
       focused />
+
+    {/* MaterialUI submit button */}
+    <Button variant="contained" onClick={handleSubmit} color="secondary">Submit</Button>
   </Box>
 
     {/* div that retrieves the message from getMessage */} 
-    <div>{getMessage}</div>
-
-
-  
-  
+    <div>{output}</div>
 
   </div>
   )
