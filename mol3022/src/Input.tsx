@@ -18,7 +18,7 @@ function Input() {
         /* http://localhost:5000/input
             Will return a reversed string */
       const response = await axios.post('http://localhost:5000/predict', { input });
-      setOutput(response.data.output);
+      setOutput(response.data.predictions);
     } catch (error) {
       console.log(error);
     }

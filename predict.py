@@ -8,11 +8,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
-model = models.load_model('protein_model2.h5', compile=False)
+model = models.load_model('protein_model.h5', compile=False)
 
 def onehot_to_seq(oh_seq, index):
     s = ''
     for o in oh_seq:
+        #print(o)
+        #print(np.argmax(o))
         i = np.argmax(o)
         if i != 0:
             s += index[i]
@@ -23,12 +25,11 @@ def onehot_to_seq(oh_seq, index):
 revsere_decoder_index = {value:key for key,value in tokenizer_struc.word_index.items()}
 revsere_encoder_index = {value:key for key,value in tokenizer_seq.word_index.items()}
 
-sequence = ['SRGTQTE']
-#seq = seq2ngrams(sequence)
+sequence = ['MKRQKRDRLERAHQRGYQAGIAGRSKEMCPYQTLNQRSQWLGGWREAMADRVVMAHHHHHH', 'TEST', 'TEST']
+seq = seq2ngrams(sequence)
 #print(seq)
 
-seq = [sequence[i:i + 3] for i in range(len(sequence))]
-
+#seq = [sequence[i:i + 3] for i in range(len(sequence))]
 #seq = np.array([seq, []], object)[0]
 
 tokenizer_seq = Tokenizer()
@@ -36,9 +37,7 @@ tokenizer_seq.fit_on_texts(seq)
 
 seq = tokenizer_seq.texts_to_sequences(seq)
 seq = pad_sequences(seq, maxlen=max_length, padding='post')
-y_pred = model.predict(seq)
-
-print("y_pred:" + str(y_pred))
+y_pred = model.predict(seq[:1])
 
 print("---")
 print("Input: " + str(sequence[0]))
