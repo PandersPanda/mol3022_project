@@ -14,7 +14,7 @@ from sklearn.model_selection import train_test_split
 data = pd.read_csv('./Data/2018-06-06-ss.cleaned.csv')
 data.len.hist(bins=100)
 max_length = 128
-print(data.shape)
+#print(data.shape)
 
 #Remove sequences that are too long and sequences that contain non-standard amino acids
 sequences, structures = data[['seq', 'sst3']][(data.len <= max_length) & (~data.has_nonstd_aa)].values.T 
@@ -36,10 +36,10 @@ tokenizer_seq.fit_on_texts(sequences)
 sequences = tokenizer_seq.texts_to_sequences(sequences)
 sequences = pad_sequences(sequences, maxlen=max_length, padding='post')
 
-print(sequences[1])
+#print(sequences[1])
 
 #sequence back to its string value
-print(tokenizer_seq.sequences_to_texts(sequences[1:2])[0])
+#print(tokenizer_seq.sequences_to_texts(sequences[1:2])[0])
 
 #Encode the structures, and categorize them
 tokenizer_struc = Tokenizer(char_level=True)
@@ -48,7 +48,7 @@ structures = tokenizer_struc.texts_to_sequences(structures)
 structures = pad_sequences(structures, maxlen=max_length, padding='post')
 structures = to_categorical(structures)
 
-print(structures[1])
+#print(structures[1])
 
 structures.shape, sequences.shape
 
@@ -61,7 +61,7 @@ model = Sequential()
 model.add(Embedding(input_dim = word_amount, output_dim= 128, input_length=max_length))
 model.add(Bidirectional(LSTM(units=64, dropout=0.2, recurrent_dropout=0.2, return_sequences=True)))
 model.add(Dense(tag_amount, activation='softmax'))
-model.summary()
+#model.summary()
 
 # Compile the model
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])

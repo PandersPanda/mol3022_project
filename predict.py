@@ -2,16 +2,14 @@ import tensorflow as tf
 from keras import models
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from sklearn.model_selection import train_test_split
-from modelv2 import tokenizer_seq, tokenizer_struc, X_train, X_test, y_train, y_test
+from modelv2 import tokenizer_seq, tokenizer_struc, seq2ngrams, max_length
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
 model = models.load_model('protein_model2.h5', compile=False)
 
-model.summary()
-
-sequences = ['HEI', 'OKI', 'KCK']
+#model.summary()
 
 #Encode the sequences with padding
 
@@ -44,8 +42,12 @@ def plot_results(x, y_):
 revsere_decoder_index = {value:key for key,value in tokenizer_struc.word_index.items()}
 revsere_encoder_index = {value:key for key,value in tokenizer_seq.word_index.items()}
 
-y_pred = model.predict(['HEI'])
-plot_results('HEI', y_pred[0])
+sequence = ['HEI']
+sequences = seq2ngrams(sequence)
+sequences = tokenizer_seq.texts_to_sequences(sequences)
+sequences = pad_sequences(sequences, maxlen=max_length, padding='post')
+y_pred = model.predict(sequences)
+plot_results(sequence, y_pred[0])
 
 # N=3
 # y_train_pred = model.predict(X_train[:N])
