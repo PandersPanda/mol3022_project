@@ -30,26 +30,29 @@ def onehot_to_seq(oh_seq, index):
             break
     return s
 
-def plot_results(x, y, y_):
+def plot_results(x, y_):
     print("---")
     print("Input: " + str(x))
-    print("Target: " + str(onehot_to_seq(y, revsere_decoder_index).upper()))
+    #print("Target: " + str(onehot_to_seq(y, revsere_decoder_index).upper()))
     print("Result: " + str(onehot_to_seq(y_, revsere_decoder_index).upper()))
-    fig = plt.figure(figsize=(10,2))
-    plt.imshow(y.T, cmap='Blues')
-    plt.imshow(y_.T, cmap='Reds', alpha=.5)
-    plt.yticks(range(4), [' '] + [revsere_decoder_index[i+1].upper() for i in range(3)])
-    plt.show()
+    #fig = plt.figure(figsize=(10,2))
+    #plt.imshow(y.T, cmap='Blues')
+    #plt.imshow(y_.T, cmap='Reds', alpha=.5)
+    #plt.yticks(range(4), [' '] + [revsere_decoder_index[i+1].upper() for i in range(3)])
+    #plt.show()
     
 revsere_decoder_index = {value:key for key,value in tokenizer_struc.word_index.items()}
 revsere_encoder_index = {value:key for key,value in tokenizer_seq.word_index.items()}
 
-N=3
-y_train_pred = model.predict(X_train[:N])
-y_test_pred = model.predict(X_test[:N])
-print('training')
-for i in range(N):
-    plot_results(sequences[i], y_train[i], y_train_pred[i])
-print('testing')
-for i in range(N):
-    plot_results(sequences[i], y_test[i], y_test_pred[i])
+y_pred = model.predict(['HEI'])
+plot_results('HEI', y_pred[0])
+
+# N=3
+# y_train_pred = model.predict(X_train[:N])
+# y_test_pred = model.predict(X_test[:N])
+# print('training')
+# for i in range(N):
+#     plot_results('HEI', y_train[i], y_train_pred[i])
+# print('testing')
+# for i in range(N):
+#     plot_results('HEI', y_test[i], y_test_pred[i])
