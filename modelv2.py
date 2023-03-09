@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 from keras.models import Sequential
 from keras.layers import *
-from keras.utils import  to_categorical
+from tensorflow.keras.utils import to_categorical
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing import text, sequence
 from tensorflow.keras.preprocessing.sequence import pad_sequences
@@ -69,6 +69,8 @@ model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accur
 # Split the data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(sequences, structures, test_size=0.3, random_state=42)
 
+"""
 # Train and save the model
 model.fit(X_train, y_train, batch_size=128, epochs=5, validation_data=(X_test, y_test), verbose=1)
 model.save("protein_model3.h5")
+"""
