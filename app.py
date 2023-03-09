@@ -47,7 +47,11 @@ def predict():
     revsere_decoder_index = {value:key for key,value in tokenizer_struc.word_index.items()}
     revsere_encoder_index = {value:key for key,value in tokenizer_seq.word_index.items()}
 
-    
+    y_ = model.predict(input_data)
+
+    result_str = onehot_to_seq(y_[0], revsere_decoder_index).upper()
+
+
     
     """
     pred = model.predict(data['input'])
@@ -65,6 +69,6 @@ def predict():
     """
 
 
-    response = {'predictions': str(onehot_to_seq(y_, revsere_decoder_index).upper())}
+    response = {'predictions': result_str}
 
     return response
