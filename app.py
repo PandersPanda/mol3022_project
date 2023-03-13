@@ -6,7 +6,7 @@ import tensorflow as tf
 import numpy as np
 from keras import models
 from tensorflow.keras.preprocessing.sequence import pad_sequences
-from modelv2 import tokenizer_seq, tokenizer_struc, seq2ngrams, max_length
+from modelv2 import tokenizer_seq, tokenizer_struc, max_length
 from keras.preprocessing.text import Tokenizer
 import pandas as pd
 
@@ -44,8 +44,8 @@ def predict():
     # Use the h5 model to predict protein structure from input
     data = request.get_json()
 
-    input_seq = [data['input'], 'TEST', 'TEST']
-    seq = seq2ngrams(input_seq)
+    input_seq = data['input']
+    seq = [[input_seq[i:i+3] for i in range(len(input_seq))]]
 
     tokenizer_seq = Tokenizer()
     tokenizer_seq.fit_on_texts(seq)
