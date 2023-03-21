@@ -8,17 +8,13 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <div style={{
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      height: '100vh',
-    }}>
-      <Input />
-    </div>
+  /* Div the centers content */
+  <div style={{display: 'flex', justifyContent: 'center', width: '100vw'}}>
+  
+    <Input />
+
+  </div>
     
-  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
