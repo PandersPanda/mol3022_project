@@ -31,4 +31,4 @@ pip install flask_cors
 
 Kjør slik:
 
-flask --app app run
+FLASK_APP=app.py flask run
