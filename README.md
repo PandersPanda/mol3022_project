@@ -2,7 +2,7 @@
 
 ## About the application:
 
-The application takes in a protein sequence of a length up to 128 amino acids and predicts the secundary structure of the protein. The application uses a Neural Network (machine learning) to make perdications. There are two parts to the application: [frontend](#frontend) and [backend](#backend). The backend was written in Python, and consists of a trained model and a simple web framework (Flask). The frontend was written using React (TypeScript), and is used to as a "communicator" between the user and the prediction model by providing a simple user-friendly user interface. 
+The application takes in a protein sequence of a length up to 128 amino acids and predicts the secundary structure of the protein. The application uses a Neural Network (machine learning) to make perdictions. There are two parts to the application: [frontend](#frontend) and [backend](#backend). The backend was written in Python, and consists of a trained model and a simple web framework (Flask). The frontend was written using React (TypeScript), and is used to as a "communicator" between the user and the prediction model by providing a simple user-friendly user interface. 
 
 ## About the dataset
 
@@ -12,58 +12,59 @@ The dataset we use to train the model was downloaded from [kaggle](https://www.k
 
 &nbsp;
 
-## Setup
+## Setup (Only need to do once)
 
-### Frontend
+It is highly recommended to do this in Windows Subsystem for Linux (WSL) or a VM. Also to use a conda environment. We used a conda environment with <mark>python 3.9</mark>. To create such an environment simply add the `python=3.9` at the end when creating the environment.
 
-The frontend application can be found in the 'frontend' folder. Run the following command to change the directory:
+### Backend Setup
+Make sure you are in your correct environment then run these commands.
 
-```
-cd frontend
-```
-
-Install npm:
-
-```
-sudo apt install npm
-```
-
-Install dependencies:
-
-```
-npm install
-```
-
-Finally, to run the frontend application, run the following command:
-```
-npm start
-```
-
-&nbsp;
-
-### Backend
-
-Backend uses Flask, which is a simple web framework written in Python. The backend application file is 'app.py' inside 'backend' folder. Change directories using:
-
-```
-cd backend
-```
-
-Remember to install Flask (possible flask_restful and flask_cors too) by running the following commands (you need to have pip installed):
-
+Install flask
 ```
 pip install flask
 pip install flask_restful
 pip install flask_cors
 ```
 
-Install dependencies:
+Other necessary installs
+```
+pip install tensorflow==2.11.*
+pip install pandas
+pip install -U scikit-learn
+pip install matplotlib
+```
+
+This should be all the prerequities for the backend.
+
+
+### Frontend setup
+
+Make sure npm is installed
+```
+sudo apt install npm
+```
+
+Then enter the frontend folder of the project
+```
+cd frontend
+```
+And run
 
 ```
 npm install
 ```
 
-Run the application like this:
+This should be all the prerequities for the frontend.
+
+## Starting the application
+
+If the setup is done properly then this is the only thing you have to do every time you wish to start the application.
+
+### Starting the Backend
+
+Backend uses Flask, which is a simple web framework written in Python. The backend application file is 'app.py' inside 'backend' folder. Change directories using:
+
+Make sure you are in the `backend` folder and in the `correct environment` then run this command
 
 ```
 FLASK_APP=app.py flask run
@@ -74,3 +75,16 @@ If the above doesn't work for some reason, you can also try running this:
 ```
 python3 -m flask run
 ```
+
+&nbsp;
+
+### Starting the Frontend
+
+In a <mark>new terminal</mark> Make sure you are in the `frontend` folder then run this command
+```
+npm start
+```
+
+### Using the application
+The application should now be available for you through localhost. Enter any browser with the url at port 3000
+[localhost:3000](http://localhost:3000)
