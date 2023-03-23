@@ -34,7 +34,7 @@ pip install -U scikit-learn
 pip install matplotlib
 ```
 
-This should be all the prerequities for the backend.
+This should be all the prerequisites for the backend.
 
 
 ### Frontend setup
@@ -54,7 +54,7 @@ And run
 npm install
 ```
 
-This should be all the prerequities for the frontend.
+This should be all the prerequisites for the frontend.
 
 ## Starting the application
 
