@@ -4,6 +4,10 @@
 
 The application takes in a protein sequence of a length up to 128 amino acids and predicts the secundary structure of the protein. The application uses a Neural Network (machine learning) to make perdications. There are two parts to the application: [frontend](#frontend) and [backend](#backend). The backend was written in Python, and consists of a trained model and a simple web framework (Flask). The frontend was written using React (TypeScript), and is used to as a "communicator" between the user and the prediction model by providing a simple user-friendly user interface. 
 
+## About the dataset
+
+The dataset we use to train the model was downloaded from [kaggle](https://www.kaggle.com/datasets/alfrandom/protein-secondary-structure).
+
 ---------
 
 &nbsp;
