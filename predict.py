@@ -7,7 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
-model = models.load_model('protein_model.h5', compile=False)
+model = models.load_model('protein_model2.h5', compile=False)
 
 def onehot_to_seq(oh_seq, index):
     s = ''

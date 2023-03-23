@@ -1,4 +1,7 @@
 ### HEYO
+## Om applikasjonen:
+
+Applikasjonen tar inn en protein-sekvens på lengde opp til 128 og predikerer sekundærstrukturen. Applikasjonen predikerer med å bruke et neuralt netverk, altså maskinlæring. 
 
 ## Frontend
 
@@ -21,8 +24,6 @@ npm start
 
 Det er flask backend og filen er 'app.py'
 
-for API-er gå inn i 'api'
-
 husk å installer flask (muligens også flask_restful og flask_cors etc.)
 
 pip install flask
@@ -32,3 +33,7 @@ pip install flask_cors
 Kjør slik:
 
 FLASK_APP=app.py flask run
+
+Eller:
+
+python3 -m flask run

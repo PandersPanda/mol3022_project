@@ -14,7 +14,8 @@ app = Flask(__name__, static_url_path='', static_folder='mol3022/public')
 CORS(app) #comment this on deployment
 api = Api(app)
 
-model = models.load_model('protein_model.h5', compile=False)
+model = models.load_model('protein_model2.h5', compile=False)
+print(model.summary())
 
 def onehot_to_seq(oh_seq, index):
     s = ''
@@ -47,9 +48,6 @@ def predict():
 
     input_seq = data['input']
     seq = [[input_seq[i:i+3] for i in range(len(input_seq))]]
-
-    tokenizer_seq = Tokenizer()
-    tokenizer_seq.fit_on_texts(seq)
 
     seq = tokenizer_seq.texts_to_sequences(seq)
     seq = pad_sequences(seq, maxlen=max_length, padding='post')
