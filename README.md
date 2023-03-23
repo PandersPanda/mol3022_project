@@ -12,10 +12,10 @@ The application takes in a protein sequence of a length up to 128 amino acids an
 
 ### Frontend
 
-The frontend application can be found in the 'mol3022' folder. Run the following command to change the directory:
+The frontend application can be found in the 'frontend' folder. Run the following command to change the directory:
 
 ```
-cd mol3022
+cd frontend
 ```
 
 Install npm:
@@ -39,14 +39,24 @@ npm start
 
 ### Backend
 
-Backend uses Flask, which is a simple web framework written in Python. The backend application file is 'app.py'.
+Backend uses Flask, which is a simple web framework written in Python. The backend application file is 'app.py' inside 'backend' folder. Change directories using:
 
-Remember to install Flask (possible flask_restful and flask_cors too) by running the following commands:
+```
+cd backend
+```
+
+Remember to install Flask (possible flask_restful and flask_cors too) by running the following commands (you need to have pip installed):
 
 ```
 pip install flask
 pip install flask_restful
 pip install flask_cors
+```
+
+Install dependencies:
+
+```
+npm install
 ```
 
 Run the application like this:
