@@ -15,7 +15,6 @@ CORS(app) #comment this on deployment
 api = Api(app)
 
 model = models.load_model('protein_model2.h5', compile=False)
-print(model.summary())
 
 def onehot_to_seq(oh_seq, index):
     s = ''
