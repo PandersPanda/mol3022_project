@@ -6,7 +6,7 @@ The application takes in a protein sequence of a length up to 128 amino acids an
 
 ## About the dataset
 
-The dataset we use to train the model was downloaded from [kaggle](https://www.kaggle.com/datasets/alfrandom/protein-secondary-structure). The dataset contains more than 300 000 rows of cleaned data, but we will only use the rows where the length of the sequence is less than 128 and has standard amino acids. The columns we are using for training the model are the sequences and their respectictive secoundary sequence. (seq and sst3).
+The dataset we use to train the model was downloaded from [kaggle](https://www.kaggle.com/datasets/alfrandom/protein-secondary-structure). The dataset contains more than 300 000 rows of cleaned data, but we will only use the rows where the length of the sequence is less than or equal to 128 and has standard amino acids. The columns we are using for training the model are the sequences and their respective secondary sequence (seq and sst3).
 
 ---------
 
@@ -17,7 +17,7 @@ The dataset we use to train the model was downloaded from [kaggle](https://www.k
 It is highly recommended to do this in Windows Subsystem for Linux (WSL) or a VM. Also to use a conda environment. We used a conda environment with <mark>python 3.9</mark>. To create such an environment simply add the `python=3.9` at the end when creating the environment.
 
 ### Backend Setup
-Make sure you are in your correct environment then run these commands.
+Backend uses Flask, which is a simple web framework written in Python. Make sure you are in your correct environment and inside the 'backend' folder, then run these commands.
 
 Install flask
 ```
@@ -62,8 +62,6 @@ If the setup is done properly then this is the only thing you have to do every t
 
 ### Starting the Backend
 
-Backend uses Flask, which is a simple web framework written in Python. The backend application file is 'app.py' inside 'backend' folder. Change directories using:
-
 Make sure you are in the `backend` folder and in the `correct environment` then run this command
 
 ```
@@ -75,6 +73,9 @@ If the above doesn't work for some reason, you can also try running this:
 ```
 python3 -m flask run
 ```
+
+If everything works correctly you should see a message in the terminal saying "Running on http://127.0.0.1:5000" or something simillar. 
+
 
 &nbsp;
 
