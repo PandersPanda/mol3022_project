@@ -56,21 +56,4 @@ structures.shape, sequences.shape
 word_amount = len(tokenizer_seq.word_index) + 1
 tag_amount = len(tokenizer_struc.word_index) + 1
 
-# Define the model architecture
-model = Sequential()
-model.add(Embedding(input_dim = word_amount, output_dim= 128, input_length=max_length))
-model.add(Bidirectional(LSTM(units=64, dropout=0.2, recurrent_dropout=0.2, return_sequences=True)))
-model.add(Dense(tag_amount, activation='softmax'))
-#model.summary()
 
-# Compile the model
-model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-
-# Split the data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(sequences, structures, test_size=0.3, random_state=42)
-
-"""
-# Train and save the model
-model.fit(X_train, y_train, batch_size=128, epochs=5, validation_data=(X_test, y_test), verbose=1)
-model.save("protein_model3.h5")
-"""
