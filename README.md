@@ -74,6 +74,11 @@ If the above doesn't work for some reason, you can also try running this:
 python3 -m flask run
 ```
 
+or this:
+```
+python -m flask run
+```
+
 If everything works correctly you should see a message in the terminal saying "Running on http://127.0.0.1:5000" or something simillar. 
 
 
@@ -87,5 +92,5 @@ npm start
 ```
 
 ### Using the application
-The application should now be available for you through localhost. Enter any browser with the url at port 3000
-[localhost:3000](http://localhost:3000)
+The application should now be available for you through localhost. Note that both frontend and backend should be running at the same time on two terminals for it to work properly. Enter any browser with the url "localhost" at port 3000
+([localhost:3000](http://localhost:3000)), and you should see the application. 
