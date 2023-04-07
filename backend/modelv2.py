@@ -1,4 +1,7 @@
 #Code inspired by https://www.kaggle.com/code/helmehelmuto/secondary-structure-prediction-with-keras
+#This file is used so that the backend can import the tokenizers
+#The code that you can run to train and evaluate the model is in modelv2.ipynb, not this one
+
 import pandas as pd
 import numpy as np
 from keras.models import Sequential
@@ -36,11 +39,6 @@ tokenizer_seq.fit_on_texts(sequences)
 sequences = tokenizer_seq.texts_to_sequences(sequences)
 sequences = pad_sequences(sequences, maxlen=max_length, padding='post')
 
-#print(sequences[1])
-
-#sequence back to its string value
-#print(tokenizer_seq.sequences_to_texts(sequences[1:2])[0])
-
 #Encode the structures, and categorize them
 tokenizer_struc = Tokenizer(char_level=True)
 tokenizer_struc.fit_on_texts(structures)
@@ -48,12 +46,11 @@ structures = tokenizer_struc.texts_to_sequences(structures)
 structures = pad_sequences(structures, maxlen=max_length, padding='post')
 structures = to_categorical(structures)
 
-#print(structures[1])
-
 structures.shape, sequences.shape
 
 #Finding the amount of words and tags, so we can use it in the model, with the correct dimensions
 word_amount = len(tokenizer_seq.word_index) + 1
 tag_amount = len(tokenizer_struc.word_index) + 1
 
-
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(sequences, structures, test_size=0.3, random_state=42)

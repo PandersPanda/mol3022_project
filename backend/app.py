@@ -6,7 +6,7 @@ import tensorflow as tf
 import numpy as np
 from keras import models
 from tensorflow.keras.preprocessing.sequence import pad_sequences
-from modelv2 import tokenizer_seq, tokenizer_struc, max_length
+from modelv2 import tokenizer_seq, tokenizer_struc, max_length, X_test, y_test
 from keras.preprocessing.text import Tokenizer
 import pandas as pd
 

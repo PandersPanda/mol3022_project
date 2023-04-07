@@ -74,9 +74,6 @@ If the above doesn't work for some reason, you can also try running this:
 python3 -m flask run
 ```
 
-If everything works correctly you should see a message in the terminal saying "Running on http://127.0.0.1:5000" or something simillar. 
-
-
 &nbsp;
 
 ### Starting the Frontend
